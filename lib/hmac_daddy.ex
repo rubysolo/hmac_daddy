@@ -65,7 +65,7 @@ defmodule HMACDaddy do
     e -> raise Plug.Parsers.ParseError, exception: e
   end
 
-  defp decode(error_conn, _), do: raise InvalidSignatureError
+  defp decode(_conn, _decoder), do: raise InvalidSignatureError
 
   defp request_valid?(signature, body) do
     computed = "sha1=#{ signature_for(body) }"
